@@ -1,0 +1,17 @@
+<h1>테이블 칼럼 목록1</h1>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>id</th>
+      <th>이름</th>
+      <th>타입</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let c of columns">
+      <td>{{ c.column_id }}</td>
+      <td>{{ c.column_name }}</td>
+      <td>{{ c.data_type }}</td>
+    </tr>
+  </tbody>
+</table>
