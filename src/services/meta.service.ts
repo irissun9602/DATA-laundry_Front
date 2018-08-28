@@ -17,6 +17,13 @@ export class MetaService{
       .catch(this.handleError); 
     }
 
+    getColumnsNumber(): Promise<All_tab_cols[]> { 
+      return this.http.get(this.URL + "columns/number")
+      .toPromise()
+      .then(response => response.json() as All_tab_cols[])
+      .catch(this.handleError); 
+    }
+
     private handleError(error: any): Promise<any> { 
       console.error('An error occurred', error); // for demo purposes only 
       return Promise.reject(error.message || error);
