@@ -11,7 +11,8 @@ import { MetaService } from '../../services/meta.service';
 export class ColumnListComponent implements OnInit {
   private metaService : MetaService;
   private route: ActivatedRoute;
-  private columns : All_tab_cols[];
+  private tables : All_tab_cols[];
+  private selectedTable : All_tab_cols[];
 
   constructor(metaService : MetaService, route: ActivatedRoute) { 
     this.metaService= metaService;
@@ -19,9 +20,16 @@ export class ColumnListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.metaService.getColumnsNumber().then(
-      columns => this.columns = columns
+    this.metaService.getTables().then(
+      tables => this.tables = tables
     );
   }
+
+  selectTable(table: All_tab_cols){
+    this.metaService.getColumnsByTable_name(table.table_name).then(
+      selectedTable => this.selectedTable = selectedTable
+    );
+  }
+
 
 }

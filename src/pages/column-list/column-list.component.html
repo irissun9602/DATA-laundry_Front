@@ -1,17 +1,32 @@
-<h1>테이블 칼럼 목록1</h1>
+<h1>테이블 목록1</h1>
 <table class="table table-bordered">
   <thead>
     <tr>
-      <th>id</th>
-      <th>이름</th>
-      <th>타입</th>
+      <th>테이블이름</th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let c of columns">
-      <td>{{ c.column_id }}</td>
-      <td>{{ c.column_name }}</td>
-      <td>{{ c.data_type }}</td>
+    <tr *ngFor="let t of tables" (click)="selectTable(t)">
+      <td>{{ t.table_name }}</td>
     </tr>
   </tbody>
 </table>
+
+<div *ngIf="selectedTable">
+    <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>칼럼 id</th>
+            <th>칼럼 name</th>
+            <th>칼럼 type</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let st of selectedTable">
+            <td>{{ st.column_id }}</td>
+            <td>{{ st.column_name }}</td>
+            <td>{{ st.data_type }}</td>
+          </tr>
+        </tbody>
+      </table>
+</div>
