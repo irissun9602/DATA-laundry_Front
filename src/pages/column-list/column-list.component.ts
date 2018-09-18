@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router'
-import { All_tab_cols } from '../../models/All_tab_cols';
 import { MetaService } from '../../services/meta.service';
+import { Record_sample } from '../../models/Record_sample';
+import { Standarzation } from '../../models/Standarzation';
 
 @Component({
   selector: 'app-column-list',
@@ -11,9 +12,9 @@ import { MetaService } from '../../services/meta.service';
 export class ColumnListComponent implements OnInit {
   private metaService : MetaService;
   private route: ActivatedRoute;
-  private tables : All_tab_cols[];
-  private selectedTable : All_tab_cols[];
-
+  private tables : Standarzation[];
+  private selectedTable : Standarzation[];
+  private showRecord : Record_sample[];
   constructor(metaService : MetaService, route: ActivatedRoute) { 
     this.metaService= metaService;
     this.route = route;
@@ -25,10 +26,15 @@ export class ColumnListComponent implements OnInit {
     );
   }
 
-  selectTable(table: All_tab_cols){
-    this.metaService.getColumnsByTable_name(table.table_name).then(
+  selectTable(table: Standarzation ){
+    this.metaService
+    .getColumnsByTable_name(table.table_name).then(
       selectedTable => this.selectedTable = selectedTable
     );
+    this.metaService
+      .getRecord_sample(table.table_name).then(
+        showRecord => this.showRecord = showRecord
+      );
   }
 
 
