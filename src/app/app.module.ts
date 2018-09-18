@@ -7,11 +7,13 @@ import { RouterModule} from '@angular/router';
 import { AppComponent } from './app.component';
 import { MetaService} from '../services/meta.service';
 import { ColumnListComponent } from '../pages/column-list/column-list.component';
+import { RecordComponent } from '../pages/record/record.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ColumnListComponent
+    ColumnListComponent,
+    RecordComponent
   ],
   imports: [
     BrowserModule,
