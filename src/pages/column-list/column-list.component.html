@@ -12,7 +12,7 @@
   </tbody>
 </table>
 
-<div *ngIf="selectedTable">
+<div *ngIf="selectedTable" >
     <table class="table table-bordered">
         <thead>
           <tr>칼럼 표준화 사전</tr>
@@ -26,7 +26,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let st of selectedTable">
+          <tr *ngFor="let st of selectedTable" (click)="selectRule(st)">
             <td>{{ st.meta_column_id }}</td>
             <td>{{ st.table_name }}</td>
             <td>{{ st.group_code_id }}</td>
@@ -51,6 +51,24 @@
         <tr *ngFor="let sr of showRecord">
           <td>{{ sr.id }}</td>
           <td>{{ sr.name }}</td>
+        </tr>
+      </tbody>
+    </table>
+</div>
+
+<div *ngIf="ruleResult">
+  <table class="table table-bordered">
+      <thead>
+        <tr>규칙 필터링 오류 목록</tr>
+        <tr>
+          <th>id</th>
+          <th>칼럼 name</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let rr of ruleResult">
+          <td>{{ rr.id }}</td>
+          <td>{{ rr.name }}</td>
         </tr>
       </tbody>
     </table>
