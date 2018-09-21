@@ -18,13 +18,6 @@ export class MetaService{
       .catch(this.handleError); 
     }
 
-    getColumnsByTable_name(name : String): Promise<Standarzation[]> { 
-      let url = this.URL + 'columns/table_name/'+name;
-      return this.http.get(url)
-      .toPromise()
-      .then(response => response.json() as Standarzation[])
-      .catch(this.handleError); 
-    }
 
 
     getColumns(): Promise<All_tab_cols[]> { 
@@ -42,6 +35,13 @@ export class MetaService{
     }
 
 
+    getColumnsByTable_name(name : String): Promise<Standarzation[]> { 
+      let url = this.URL + 'columns/table_name/'+name;
+      return this.http.get(url)
+      .toPromise()
+      .then(response => response.json() as Standarzation[])
+      .catch(this.handleError); 
+    }
     getRecord_sample(name : String): Promise<Record_sample[]> { 
       let url = this.URL + 'record/'+name;
       return this.http.get(url)
@@ -50,6 +50,15 @@ export class MetaService{
       .catch(this.handleError); 
     }
 
+    getYN_sample( detail_code_name : String): Promise<Record_sample[]> { 
+      let url = this.URL +'SAMPLE/'+detail_code_name;
+      return this.http.get(url)
+      .toPromise()
+      .then(response => response.json() as Record_sample[])
+      .catch(this.handleError); 
+    }
+
+    
 
     private handleError(error: any): Promise<any> { 
       console.error('An error occurred', error); // for demo purposes only 

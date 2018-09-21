@@ -15,6 +15,7 @@ export class ColumnListComponent implements OnInit {
   private tables : Standarzation[];
   private selectedTable : Standarzation[];
   private showRecord : Record_sample[];
+  private ruleResult : Record_sample[];
   constructor(metaService : MetaService, route: ActivatedRoute) { 
     this.metaService= metaService;
     this.route = route;
@@ -35,6 +36,15 @@ export class ColumnListComponent implements OnInit {
       .getRecord_sample(table.table_name).then(
         showRecord => this.showRecord = showRecord
       );
+  }
+
+  selectRule(table: Standarzation){
+    this.metaService
+    .getYN_sample(table.detail_code_name).then(
+      ruleResult => this.ruleResult = ruleResult
+    );
+    
+    
   }
 
 
