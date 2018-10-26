@@ -27,7 +27,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let st of selectedTable" (click)="selectRule(st)">
+          <tr onMouseOver="this.style.backgroundColor='#FFF4E9';" onMouseOut="this.style.backgroundColor=''" *ngFor="let st of selectedTable" (click)="selectRule(st)">
             <td>{{ st.meta_column_id }}</td>
             <td>{{ st.column_name }}</td>
             <td>{{ st.table_name }}</td>
