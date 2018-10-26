@@ -4,6 +4,7 @@ import 'rxjs/add/operator/toPromise';
 import { All_tab_cols } from '../models/All_tab_cols';
 import { Record_sample } from '../models/Record_sample';
 import { Standarzation } from '../models/Standarzation';
+import {ParameterType } from '../models/ParameterType';
 @Injectable()
 export class MetaService{
   private URL = 'http://localhost:8080/data_L/api/';
@@ -42,23 +43,21 @@ export class MetaService{
       .then(response => response.json() as Standarzation[])
       .catch(this.handleError); 
     }
-    getRecord_sample(name : String): Promise<Record_sample[]> { 
-      let url = this.URL + 'record/'+name;
+    getRecord_sample(table_name : String): Promise<Array<Map<string,object>>> { 
+      let url = this.URL + 'record/'+table_name;
       return this.http.get(url)
       .toPromise()
-      .then(response => response.json() as Record_sample[])
+      .then(response => response.json() as Array<Map<string,object>>)
       .catch(this.handleError); 
     }
 
-    getYN_sample( detail_code_name : String): Promise<Record_sample[]> { 
-      let url = this.URL +'SAMPLE/'+detail_code_name;
-      return this.http.get(url)
+    getYN_sample(paramterType : ParameterType): Promise<Array<Map<string,object>>> { 
+      let url = this.URL +'selectedColumn';
+      return this.http.post(url, paramterType)
       .toPromise()
-      .then(response => response.json() as Record_sample[])
+      .then(response => response.json() as Array<Map<string,object>>)
       .catch(this.handleError); 
     }
-
-    
 
     private handleError(error: any): Promise<any> { 
       console.error('An error occurred', error); // for demo purposes only 

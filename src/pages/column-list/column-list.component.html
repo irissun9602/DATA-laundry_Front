@@ -45,12 +45,14 @@
         <tr>
           <th>id</th>
           <th>칼럼 name</th>
+          <th>칼럼 yesno</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let sr of showRecord">
           <td>{{ sr.id }}</td>
           <td>{{ sr.name }}</td>
+          <td>{{sr.yesno}}</td>
         </tr>
       </tbody>
     </table>
@@ -63,12 +65,14 @@
         <tr>
           <th>id</th>
           <th>칼럼 name</th>
+          <th>칼럼 yesno</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let rr of ruleResult">
           <td>{{ rr.id }}</td>
           <td>{{ rr.name }}</td>
+          <td>{{ rr.yesno}}</td>
         </tr>
       </tbody>
     </table>
