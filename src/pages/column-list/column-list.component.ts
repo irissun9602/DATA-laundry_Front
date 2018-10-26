@@ -4,6 +4,7 @@ import { MetaService } from '../../services/meta.service';
 import { Record_sample } from '../../models/Record_sample';
 import { Standarzation } from '../../models/Standarzation';
 import { ParameterType } from '../../models/ParameterType';
+import { FilterResult } from '../../models/FilterResult';
 @Component({
   selector: 'app-column-list',
   templateUrl: './column-list.component.html',
@@ -15,7 +16,7 @@ export class ColumnListComponent implements OnInit {
   private tables : Standarzation[];
   private selectedTable : Standarzation[];
   private showRecord : Array<Map<string,object>>;
-  private ruleResult : Array<Map<string,object>>;
+  private ruleResult : FilterResult[];
   private p : ParameterType;
   private as : String[];
   constructor(metaService : MetaService, route: ActivatedRoute) { 
@@ -39,11 +40,6 @@ export class ColumnListComponent implements OnInit {
         showRecord => this.showRecord = showRecord
       );
 
-      for(var i=0; i<this.showRecord.length;i++)
-        var a = this.showRecord[i];
-        for( var key in a ){
-          this.as.push(a[key]);
-        }
        
   }
 

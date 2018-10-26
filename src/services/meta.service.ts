@@ -5,6 +5,7 @@ import { All_tab_cols } from '../models/All_tab_cols';
 import { Record_sample } from '../models/Record_sample';
 import { Standarzation } from '../models/Standarzation';
 import {ParameterType } from '../models/ParameterType';
+import { FilterResult } from '../models/FilterResult';
 @Injectable()
 export class MetaService{
   private URL = 'http://localhost:8080/data_L/api/';
@@ -47,15 +48,15 @@ export class MetaService{
       let url = this.URL + 'record/'+table_name;
       return this.http.get(url)
       .toPromise()
-      .then(response => response.json() as Array<Map<string,object>>)
+      .then(response => response.json() as Record_sample[])
       .catch(this.handleError); 
     }
 
-    getYN_sample(paramterType : ParameterType): Promise<Array<Map<string,object>>> { 
+    getYN_sample(paramterType : ParameterType): Promise< FilterResult[] > { 
       let url = this.URL +'selectedColumn';
       return this.http.post(url, paramterType)
       .toPromise()
-      .then(response => response.json() as Array<Map<string,object>>)
+      .then(response => response.json() as FilterResult[])
       .catch(this.handleError); 
     }
 
